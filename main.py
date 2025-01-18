@@ -37,8 +37,32 @@ class BusinessList:
 
 
 def main():
-    pass
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        page = browser.new_page()
+        page.goto("https://www.google.com/maps", timeout=60000)
+        page.wait_for_timeout(5000)
+
+        page.locator('//input[@id="searchboxinput"]').fill(search_for)
+        page.wait_for_timeout(3000)
+
+        page.keyboard.press("Enter")
+        page.wait_for_timeout(5000)
+
+        listings = page.locator(
+            '//a[contains(@href, "https://www.google.com/maps/place")]'
+        ).all()[:5]
+
+        print(f"Total Scraped: {len(listings)}")
 
 
 if __name__ == '__main__':
+    search = input("Search business name: ")
+    location = input("Location: ")
+
+    if location and search:
+        search_for = f"{search} {location}"
+    else:
+        search_for = f"Dentist New York"
+
     main()
