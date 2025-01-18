@@ -7,7 +7,12 @@ import openpyxl
 
 @dataclass
 class Business:
-    pass
+    name: str = None
+    address: str = None
+    website: str = None
+    phone_number: str = None
+    reviews_count: int = None
+    reviews_average: float = None
 
 
 @dataclass
