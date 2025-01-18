@@ -2,7 +2,6 @@ from playwright.sync_api import sync_playwright
 from dataclasses import dataclass, asdict, field
 import pandas as pd
 import os
-import openpyxl
 
 
 @dataclass
@@ -22,7 +21,7 @@ class BusinessList:
 
     def dataframe(self):
         return pd.json_normalize(
-            (asdict(business) for business in self.business_list), sep="_"
+            (asdict(business) for business in self.business_list), sep='_'
         )
 
     def save_to_excel(self, filename):
@@ -40,7 +39,7 @@ def main():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
         page = browser.new_page()
-        page.goto("https://www.google.com/maps", timeout=60000)
+        page.goto('https://www.google.com/maps', timeout=60000)
         page.wait_for_timeout(5000)
 
         page.locator('//input[@id="searchboxinput"]').fill(search_for)
@@ -53,7 +52,7 @@ def main():
             '//a[contains(@href, "https://www.google.com/maps/place")]'
         ).all()[:5]
 
-        print(f"Total Scraped: {len(listings)}")
+        print(f'Total Scraped: {len(listings)}')
 
         business_list = BusinessList()
 
@@ -65,7 +64,9 @@ def main():
                 name_attribute = 'aria-label'
                 address_xpath = '//button[@data-item-id="address"]//div[contains(@class, "fontBodyMedium")]'
                 website_xpath = '//a[@data-item-id="authority"]//div[contains(@class, "fontBodyMedium")]'
-                phone_number_xpath = '//button[contains(@data-item-id, "phone:tel:")]//div[contains(@class, "fontBodyMedium")]'
+                phone_number_xpath = (
+                    '//button[contains(@data-item-id, "phone:tel:")]//div[contains(@class, "fontBodyMedium")]'
+                )
                 review_count_xpath = '//div[@jsaction="pane.reviewChart.moreReviews"]//button'
                 reviews_average_xpath = '//div[@jsaction="pane.reviewChart.moreReviews"]//div[@role="img"]'
 
@@ -75,22 +76,22 @@ def main():
                 if title_attr:
                     business.name = title_attr
                 else:
-                    business.name = ""
+                    business.name = ''
 
                 if page.locator(address_xpath).count() > 0:
                     business.address = page.locator(address_xpath).all()[0].inner_text()
                 else:
-                    business.address = ""
+                    business.address = ''
 
                 if page.locator(website_xpath).count() > 0:
                     business.website = page.locator(website_xpath).all()[0].inner_text()
                 else:
-                    business.website = ""
+                    business.website = ''
 
                 if page.locator(phone_number_xpath).count() > 0:
                     business.phone_number = page.locator(phone_number_xpath).all()[0].inner_text()
                 else:
-                    business.phone_number = ""
+                    business.phone_number = ''
 
                 if page.locator(review_count_xpath).count() > 0:
                     business.reviews_count = int(
@@ -116,18 +117,19 @@ def main():
             except Exception as e:
                 print(f'Error occurred: {e}')
 
-        business_list.save_to_excel(f"maps_data_{search_for}".replace(" ", "_"))
-        business_list.save_to_csv(f"maps_data_{search_for}".replace(' ', '_'))
+        business_list.save_to_excel(f'maps_data_{search_for}'.replace(' ', '_'))
+        business_list.save_to_csv(f'maps_data_{search_for}'.replace(' ', '_'))
 
         browser.close()
 
+
 if __name__ == '__main__':
-    search = input("Search business name: ")
-    location = input("Location: ")
+    search = input('Search business name: ')
+    location = input('Location: ')
 
     if location and search:
-        search_for = f"{search} {location}"
+        search_for = f'{search} {location}'
     else:
-        search_for = f"Dentist New York"
+        search_for = f'Dentist New York'
 
     main()
