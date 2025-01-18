@@ -55,6 +55,15 @@ def main():
 
         print(f"Total Scraped: {len(listings)}")
 
+        business_list = BusinessList()
+
+        for listing in listings:
+            try:
+                pass
+
+            except Exception as e:
+                print(f'Error occurred: {e}')
+
 
 if __name__ == '__main__':
     search = input("Search business name: ")
