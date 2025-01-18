@@ -18,6 +18,7 @@ class Business:
 @dataclass
 class BusinessList:
     business_list: list[Business] = field(default_factory=list)
+    save_at = 'output'
 
     def dataframe(self):
         return pd.json_normalize(
@@ -25,10 +26,14 @@ class BusinessList:
         )
 
     def save_to_excel(self, filename):
-        pass
+        if not os.path.exists(self.save_at):
+            os.makedirs(self.save_at)
+        self.dataframe().to_excel(f'output/{filename}.xlsx', index=False)
 
     def save_to_csv(self, filename):
-        pass
+        if not os.path.exists(self.save_at):
+            os.makedirs(self.save_at)
+        self.dataframe().to_csv(f'output/{filename}.csv', index=False)
 
 
 def main():
