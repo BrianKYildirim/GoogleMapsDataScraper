@@ -20,7 +20,9 @@ class BusinessList:
     business_list: list[Business] = field(default_factory=list)
 
     def dataframe(self):
-        pass
+        return pd.json_normalize(
+            (asdict(business) for business in self.business_list), sep="_"
+        )
 
     def save_to_excel(self, filename):
         pass
