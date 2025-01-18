@@ -117,7 +117,9 @@ def main():
                 print(f'Error occurred: {e}')
 
         business_list.save_to_excel(f"maps_data_{search_for}".replace(" ", "_"))
+        business_list.save_to_csv(f"maps_data_{search_for}".replace(' ', '_'))
 
+        browser.close()
 
 if __name__ == '__main__':
     search = input("Search business name: ")
