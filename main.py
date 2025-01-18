@@ -102,6 +102,15 @@ def main():
                 else:
                     business.reviews_count = ""
 
+                if page.locator(reviews_average_xpath).count() > 0:
+                    business.reviews_average = float(
+                        page.locator(reviews_average_xpath).get_attribute(name_attribute)
+                        .split()[0]
+                        .replace(',', '.')
+                        .strip())
+                else:
+                    business.reviews_average = ""
+
             except Exception as e:
                 print(f'Error occurred: {e}')
 
