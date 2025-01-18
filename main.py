@@ -17,7 +17,16 @@ class Business:
 
 @dataclass
 class BusinessList:
-    pass
+    business_list: list[Business] = field(default_factory=list)
+
+    def dataframe(self):
+        pass
+
+    def save_to_excel(self, filename):
+        pass
+
+    def save_to_csv(self, filename):
+        pass
 
 
 def main():
