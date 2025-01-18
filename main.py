@@ -116,6 +116,8 @@ def main():
             except Exception as e:
                 print(f'Error occurred: {e}')
 
+        business_list.save_to_excel(f"maps_data_{search_for}".replace(" ", "_"))
+
 
 if __name__ == '__main__':
     search = input("Search business name: ")
