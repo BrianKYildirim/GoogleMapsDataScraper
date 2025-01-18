@@ -87,6 +87,11 @@ def main():
                 else:
                     business.website = ""
 
+                if page.locator(phone_number_xpath).count() > 0:
+                    business.phone_number = page.locator(phone_number_xpath).all()[0].inner_text()
+                else:
+                    business.phone_number = ""
+
             except Exception as e:
                 print(f'Error occurred: {e}')
 
