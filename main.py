@@ -79,6 +79,13 @@ def main():
 
                 if page.locator(address_xpath).count() > 0:
                     business.address = page.locator(address_xpath).all()[0].inner_text()
+                else:
+                    business.address = ""
+
+                if page.locator(website_xpath).count() > 0:
+                    business.website = page.locator(website_xpath).all()[0].inner_text()
+                else:
+                    business.website = ""
 
             except Exception as e:
                 print(f'Error occurred: {e}')
