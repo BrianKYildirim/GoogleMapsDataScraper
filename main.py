@@ -111,6 +111,8 @@ def main():
                 else:
                     business.reviews_average = ""
 
+                business_list.business_list.append(business)
+
             except Exception as e:
                 print(f'Error occurred: {e}')
 
