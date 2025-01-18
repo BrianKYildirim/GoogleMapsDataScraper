@@ -59,7 +59,15 @@ def main():
 
         for listing in listings:
             try:
-                pass
+                listing.click()
+                page.wait_for_timeout(5000)
+
+                name_attribute = 'aria-label'
+                address_xpath = '//button[@data-item-id="address"]//div[contains(@class, "fontBodyMedium")]'
+                website_xpath = '//a[@data-item-id="authority"]//div[contains(@class, "fontBodyMedium")]'
+                phone_number_xpath = '//button[contains(@data-item-id, "phone:tel:")]//div[contains(@class, "fontBodyMedium")]'
+                review_count_xpath = '//div[@jsaction="pane.reviewChart.moreReviews"]//button'
+                reviews_average_xpath = '//div[@jsaction="pane.reviewChart.moreReviews"]//div[@role="img"]'
 
             except Exception as e:
                 print(f'Error occurred: {e}')
