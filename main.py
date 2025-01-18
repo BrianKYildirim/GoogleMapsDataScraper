@@ -92,6 +92,16 @@ def main():
                 else:
                     business.phone_number = ""
 
+                if page.locator(review_count_xpath).count() > 0:
+                    business.reviews_count = int(
+                        page.locator(review_count_xpath).inner_text()
+                        .split()[0]
+                        .replace(',', '')
+                        .strip()
+                    )
+                else:
+                    business.reviews_count = ""
+
             except Exception as e:
                 print(f'Error occurred: {e}')
 
