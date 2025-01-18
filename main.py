@@ -69,6 +69,14 @@ def main():
                 review_count_xpath = '//div[@jsaction="pane.reviewChart.moreReviews"]//button'
                 reviews_average_xpath = '//div[@jsaction="pane.reviewChart.moreReviews"]//div[@role="img"]'
 
+                business = Business()
+                title_attr = listing.get_attribute('aria-label')
+
+                if title_attr:
+                    business.name = title_attr
+                else:
+                    business.name = ""
+
             except Exception as e:
                 print(f'Error occurred: {e}')
 
