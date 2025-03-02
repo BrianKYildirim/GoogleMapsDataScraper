@@ -24,7 +24,7 @@ Disclaimer: Use this tool responsibly and in compliance with [Google’s Terms o
 2. Create a Virtual Environment (Optional but Recommended):
    ```
    python -m venv venv
-   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   source venv/bin/activate  # On Windows, use `venv/Scripts/activate`
    ```
 3. Install Dependencies:
    ```
@@ -47,7 +47,7 @@ Disclaimer: Use this tool responsibly and in compliance with [Google’s Terms o
   python main.py
   ```
 - Review Your Data:
-  - Once the script completes, check your specified output file (e.g., data.csv) for the scraped information.
+  - Once the script completes, check your specified output file (e.g., data.csv) for the scraped information. This file will be located in  wherever you cloned the repository, then in GoogleMapsDataScraper/output/
 
 **Acknowledgements:**
 Thanks to the developers of Selenium, BeautifulSoup, and other libraries used in this project.
