@@ -30,22 +30,14 @@ Disclaimer: Use this tool responsibly and in compliance with [Google’s Terms o
    ```
    pip install -r requirements.txt
    ```
-4. Download and Configure WebDriver:
-- Download the ChromeDriver (or any other WebDriver for your browser).
-- Ensure the WebDriver executable is in your system’s PATH or specify its location in the configuration file.
 
 **Usage:**
-- Adjust Settings:
-    - Open the configuration file (config.json or similar) and update parameters such as:
-      - search_query
-      - location
-      - output_file
-      - webdriver_path
-      - Any other options (e.g., headless mode, delay times)
 - Run the Scraper:
   ```
   python main.py
   ```
+- Input your desired data (business name, location).
+- Wait for the app to scrape the data.
 - Review Your Data:
   - Once the script completes, check your specified output file (e.g., data.csv) for the scraped information. This file will be located in  wherever you cloned the repository, then in GoogleMapsDataScraper/output/
 
