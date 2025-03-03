@@ -40,13 +40,13 @@ def main():
         browser = p.chromium.launch(headless=False)
         page = browser.new_page()
         page.goto('https://www.google.com/maps', timeout=60000)
-        page.wait_for_timeout(5000)
+        page.wait_for_timeout(1500)
 
         page.locator('//input[@id="searchboxinput"]').fill(search_for)
-        page.wait_for_timeout(3000)
+        page.wait_for_timeout(1500)
 
         page.keyboard.press("Enter")
-        page.wait_for_timeout(5000)
+        page.wait_for_timeout(1500)
 
         listings = page.locator(
             '//a[contains(@href, "https://www.google.com/maps/place")]'
@@ -59,7 +59,7 @@ def main():
         for listing in listings:
             try:
                 listing.click()
-                page.wait_for_timeout(5000)
+                page.wait_for_timeout(2000)
 
                 name_attribute = 'aria-label'
                 address_xpath = '//button[@data-item-id="address"]//div[contains(@class, "fontBodyMedium")]'
