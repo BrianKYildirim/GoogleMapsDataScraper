@@ -10,9 +10,7 @@ Disclaimer: Use this tool responsibly and in compliance with [Google’s Terms o
 
 **Requirements:**
 - Python 3.7 or higher
-- Selenium
-- BeautifulSoup4 (if used)
-- Pandas (optional, for CSV handling)
+- Pandas
 - A compatible WebDriver (e.g., ChromeDriver if using Google Chrome)
 
 **Installation:**
@@ -42,7 +40,7 @@ Disclaimer: Use this tool responsibly and in compliance with [Google’s Terms o
   - Once the script completes, check your specified output file (e.g., data.csv) for the scraped information. This file will be located in  wherever you cloned the repository, then in GoogleMapsDataScraper/output/
 
 **Acknowledgements:**
-Thanks to the developers of Selenium, BeautifulSoup, and other libraries used in this project.
+Thanks to the developers of Pandas, Playwright, and other libraries used in this project.
 
 Inspired by various web scraping tutorials and communities.
 
