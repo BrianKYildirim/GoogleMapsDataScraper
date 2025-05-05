@@ -10,9 +10,7 @@ Disclaimer: Use this tool responsibly and in compliance with [Google’s Terms o
 
 **Requirements:**
 - Python 3.7 or higher
-- Selenium
-- BeautifulSoup4 (if used)
-- Pandas (optional, for CSV handling)
+- Pandas
 - A compatible WebDriver (e.g., ChromeDriver if using Google Chrome)
 
 **Installation:**
@@ -24,33 +22,25 @@ Disclaimer: Use this tool responsibly and in compliance with [Google’s Terms o
 2. Create a Virtual Environment (Optional but Recommended):
    ```
    python -m venv venv
-   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   source venv/bin/activate  # On Windows, use `venv/Scripts/activate`
    ```
 3. Install Dependencies:
    ```
    pip install -r requirements.txt
    ```
-4. Download and Configure WebDriver:
-- Download the ChromeDriver (or any other WebDriver for your browser).
-- Ensure the WebDriver executable is in your system’s PATH or specify its location in the configuration file.
 
 **Usage:**
-- Adjust Settings:
-    - Open the configuration file (config.json or similar) and update parameters such as:
-      - search_query
-      - location
-      - output_file
-      - webdriver_path
-      - Any other options (e.g., headless mode, delay times)
 - Run the Scraper:
   ```
   python main.py
   ```
+- Input your desired data (business name, location).
+- Wait for the app to scrape the data.
 - Review Your Data:
-  - Once the script completes, check your specified output file (e.g., data.csv) for the scraped information.
+  - Once the script completes, check your specified output file (e.g., data.csv) for the scraped information. This file will be located in  wherever you cloned the repository, then in GoogleMapsDataScraper/output/
 
 **Acknowledgements:**
-Thanks to the developers of Selenium, BeautifulSoup, and other libraries used in this project.
+Thanks to the developers of Pandas, Playwright, and other libraries used in this project.
 
 Inspired by various web scraping tutorials and communities.
 
